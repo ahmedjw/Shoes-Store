@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { dataContext } from "../context/DataProvider";
 
 export default function Filtter() {
-  const [size, setSize] = useState("");
+  const { size, setSize } = useContext(dataContext);
   return (
     <main value={size} onChange={(e) => setSize(e.target.value)}>
       <section id="filters">

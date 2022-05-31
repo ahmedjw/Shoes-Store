@@ -1,5 +1,6 @@
 import React from "react";
+import { DataProvider } from "../context/DataProvider";
 
 export default function Layout({ children }) {
-  return <div>{children}</div>;
+  return <DataProvider>{children}</DataProvider>;
 }

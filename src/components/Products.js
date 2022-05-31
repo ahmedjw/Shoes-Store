@@ -1,25 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
+import { dataContext } from "../context/DataProvider";
 import useGetproducts from "../hooks/useGetproducts";
+import Spinner from "../sharedcomponents/SPinner";
 import Product from "./Product";
 
 export default function () {
+  const { size } = useContext(dataContext);
   const {
     data: products,
     isLoading,
     isError,
     err,
   } = useGetproducts("products?category=shoes");
+  console.log(products);
   if (isLoading) {
-    return <h3>Loading ......</h3>;
+    return <Spinner />;
   }
   if (isError) {
     return <h3>there is An Error :{err} </h3>;
   }
+
   return (
     <div id="products">
-      {products.map((product) => (
-        <Product p={product} />
-      ))}
+      {size !== ""
+        ? products
+            .filter((product) =>
+              product.skus.find((s) => s.size === parseInt(size))
+            )
+            .map((product) => <Product p={product} />)
+        : products.map((product) => <Product p={product} />)}
     </div>
   );
 }
