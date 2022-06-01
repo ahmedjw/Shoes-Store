@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
+  
   return (
     <header>
       <nav>
@@ -11,6 +12,8 @@ export default function Header() {
             <img alt="Carved Rock Fitness" src="/images/logo.png" />
             </Link>
             </li>
+            <li><NavLink to={'/shoes'}>shoes</NavLink></li>
+            <li><NavLink to={'/cart'}>Cart</NavLink></li>
         </ul>
       </nav>
     </header>
