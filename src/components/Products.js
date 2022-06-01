@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { dataContext } from "../context/DataProvider";
 import useGetproducts from "../hooks/useGetproducts";
-import Spinner from "../sharedcomponents/Spinner";
-import Product from "../sharedcomponents/Product";
+import Spinner from "../sharedComponents/Spinner";
+import Product from "../sharedComponents/Product";
+import PageNotFound from "./PageNotFound";
 
 export default function () {
   const { size } = useContext(dataContext);
@@ -20,7 +21,9 @@ export default function () {
   if (isError) {
     return <h3>there is An Error :{err} </h3>;
   }
-
+  if (products.length === 0) {
+    return <PageNotFound />;
+  }
   return (
     <div id="products">
       {size !== ""
