@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -6,8 +7,10 @@ export default function Header() {
       <nav>
         <ul>
           <li>
+            <Link to={'/'}>
             <img alt="Carved Rock Fitness" src="/images/logo.png" />
-          </li>
+            </Link>
+            </li>
         </ul>
       </nav>
     </header>

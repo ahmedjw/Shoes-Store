@@ -27,8 +27,8 @@ export default function () {
             .filter((product) =>
               product.skus.find((s) => s.size === parseInt(size))
             )
-            .map((product) => <Product p={product} />)
-        : products.map((product) => <Product p={product} />)}
+            .map((product) => <Product p={product} key={product.id} />)
+        : products.map((product) => <Product p={product} key={product.id} />)}
     </div>
   );
 }

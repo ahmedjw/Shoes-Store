@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 export default function useGetproducts(url) {
@@ -19,6 +19,6 @@ export default function useGetproducts(url) {
       }
     }
     init();
-  }, []);
+  }, [url]);
   return { data, isLoading, isError, err };
 }
