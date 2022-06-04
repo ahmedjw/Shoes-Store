@@ -18,7 +18,6 @@ export default function ProductDetail({ cart, setCart }) {
   function addToCart(id, sku) {
     setCart((items) => {
       const itemInCart = items.find((item) => item.sku === sku);
-
       if (itemInCart) {
         return items.map((item) =>
           item.sku === sku ? { ...item, quantity: item.quantity + 1 } : item
