@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { postData } from "../api/ShipingServices";
 
 // Declaring outside component to avoid recreation on each render

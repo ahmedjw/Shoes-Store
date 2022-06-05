@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Cart from "../components/Cart";
 import Checkout from "../components/Checkout";
 import Content from "../components/Content";
-import ProductDetail from "../sharedComponents/Productetails";
+import ProductDetail from "../sharedComponents/ProductetailsUseRef";
 
 export default function PageRoutes() {
   const [cart, setCart] = useState(() => {

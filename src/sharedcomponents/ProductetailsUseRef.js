@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import PageNotFound from "../components/PageNotFound";
 import useGetproducts from "../hooks/useGetproducts";
@@ -7,8 +7,7 @@ import Spinner from "./Spinner";
 export default function ProductDetail({ cart, setCart }) {
   let navigate = useNavigate();
   const { id } = useParams();
-  const [Sku, setSku] = useState("");
-
+  const skuRef = useRef(null);
   const {
     data: product,
     isError,
@@ -43,13 +42,7 @@ export default function ProductDetail({ cart, setCart }) {
       <h1>{product.name}</h1>
       <p>{product.description}</p>
       <p id="price">${product.price}</p>
-      <select
-        id="size"
-        value={Sku}
-        onChange={(e) => {
-          setSku(e.target.value);
-        }}
-      >
+      <select id="size" ref={skuRef}>
         <option value="">Select Sku</option>
         {product.skus.map((prop) => (
           <option key={prop.sku} value={prop.sku}>
@@ -59,10 +52,10 @@ export default function ProductDetail({ cart, setCart }) {
       </select>
       <p>
         <button
-          disabled={!Sku}
           className="btn btn-primary"
           onClick={() => {
-            addToCart(id, Sku);
+            const sku = skuRef.current.value;
+            addToCart(id, sku);
             navigate("/cart");
           }}
         >
