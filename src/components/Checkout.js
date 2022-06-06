@@ -13,7 +13,7 @@ const STATUS = {
   completed: "completed",
 };
 
-export default function Checkout({ emptyCart }) {
+export default function Checkout({ dispatch }) {
   const [address, setAddress] = useState(emptyAddress);
   const [status, setStatus] = useState(STATUS.Idle);
   const [err, setErr] = useState("");
@@ -22,7 +22,7 @@ export default function Checkout({ emptyCart }) {
   function saveShippingData(data) {
     try {
       postData(data);
-      emptyCart();
+      dispatch({ type: "emptyCart" });
       setStatus(STATUS.completed);
     } catch (r) {
       setErr(r);

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import PageNotFound from "../components/PageNotFound";
+import CartReducer from "../hooks/cartReducer";
 import useGetproducts from "../hooks/useGetproducts";
 import Spinner from "./Spinner";
 
@@ -55,7 +56,6 @@ export default function ProductDetail({ cart, setCart }) {
           className="btn btn-primary"
           onClick={() => {
             const sku = skuRef.current.value;
-            addToCart(id, sku);
             navigate("/cart");
           }}
         >
